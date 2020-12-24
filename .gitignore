@@ -5,3 +5,6 @@
 
 # temporary files
 *.swp
+
+# output directory
+build/

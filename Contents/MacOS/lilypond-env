@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+
+APP_PATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
+
+export PATH="${APP_PATH}:$PATH"
+
+uuid=$(uuidgen)
+
+${APP_PATH}/lilypond -o /tmp/lilypond.${uuid} - <<EOF
+\\header{ title = "C Major scale" }
+\\relative { c' d e f g a b c }
+EOF
+
+rm /tmp/lilypond.${uuid}.pdf
