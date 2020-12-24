@@ -1,5 +1,7 @@
 #!/usr/bin/osascript
 
+tell me to activate
+
 set input to display dialog ¬
     "term: " ¬
     default answer "" ¬
