@@ -17,6 +17,29 @@ EOF
 
 rm /tmp/lilypond.${uuid}.pdf
 
-USR_TERM=$(${APP_PATH}/lilypond-dialog)
+USR_CONFIG=${HOME}/.config/lilypond/lilypond.conf
 
-bash -c "${USR_TERM}"
+if [ -f "${USR_CONFIG}" ]; then
+    while read var value; do
+        export "${var}"="${value}"
+    done < "${USR_CONFIG}"
+fi
+
+if [ -z ${ly_usr_term+x} ]; then
+    ly_usr_term=$(${APP_PATH}/lilypond-dialog)
+fi
+
+[ -z "${ly_usr_term}" ] && { exit; }
+
+if [ -f "${ly_usr_term}" ] && [ -x "${ly_usr_term}" ]; then
+    if [ ! -f "${USR_CONFIG}" ]; then
+        mkdir -p "$(dirname "${USR_CONFIG}")"
+    fi
+
+    echo "ly_usr_term ${ly_usr_term}" >> "${USR_CONFIG}"
+
+    bash -c "${ly_usr_term}"
+else
+    /usr/bin/osascript -e "display notification \
+        \"invalid file\" with title \"lilypond\""
+fi
