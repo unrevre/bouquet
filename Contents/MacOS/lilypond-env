@@ -9,6 +9,8 @@ export PATH="${APP_PATH}:$PATH"
 uuid=$(uuidgen)
 
 ${APP_PATH}/lilypond -o /tmp/lilypond.${uuid} - <<EOF
+\\version "__LY_VERSION"
+
 \\header{ title = "C Major scale" }
 \\relative { c' d e f g a b c }
 EOF

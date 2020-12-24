@@ -61,43 +61,6 @@ mkdir -p ${LY_APP_BINARIES} ${LY_APP_RESOURCES} ${LY_APP_FRAMEWORKS}
 mkdir -p ${LY_APP_RESOURCES}/share
 mkdir -p ${LY_APP_FRAMEWORKS}/${GU_FORMULA}
 
-# generate bundle plist
-cat > ${LY_APP_CONTENT}/Info.plist <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>CFBundleExecutable</key>
-    <string>${LY_WRAPPER}</string>
-    <key>CFBundleSignature</key>
-    <string>lily</string>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
-    <key>CFBundleVersion</key>
-    <string>${LY_VERSION}</string>
-    <key>CFBundleIdentifier</key>
-    <string>org.lilypond.lilypond</string>
-    <key>CFBundleDisplayName</key>
-    <string>LilyPond</string>
-    <key>CFBundleName</key>
-    <string>LilyPond</string>
-    <key>CFBundleDocumentTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleTypeExtensions</key>
-            <array>
-                <string>ly</string>
-            </array>
-            <key>CFBundleTypeName</key>
-            <string>LilyPond source</string>
-        </dict>
-    </array>
-    <key>CFBundleIconFile</key>
-    <string>lilypond.icns</string>
-</dict>
-</plist>
-EOF
-
 # copy binaries/executables
 cp ${LY_PATH}/bin/* ${LY_APP_BINARIES}/
 
@@ -135,3 +98,9 @@ cp -r ${LY_PATH}/share/locale ${LY_APP_RESOURCES}/share/
 
 # copy miscellaneous assets (icons, etc..)
 cp -r ./Contents ${LY_APP}/
+
+# replace variables
+sed -i '' "s/__LY_VERSION/${LY_VERSION}/g" ${LY_APP_CONTENT}/Info.plist
+sed -i '' "s/__LY_WRAPPER/${LY_WRAPPER}/g" ${LY_APP_CONTENT}/Info.plist
+
+sed -i '' "s/__LY_VERSION/${LY_VERSION}/g" ${LY_APP_BINARIES}/${LY_WRAPPER}

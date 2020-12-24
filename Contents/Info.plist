@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleExecutable</key>
+    <string>__LY_WRAPPER</string>
+    <key>CFBundleSignature</key>
+    <string>lily</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleVersion</key>
+    <string>__LY_VERSION</string>
+    <key>CFBundleIdentifier</key>
+    <string>org.lilypond.lilypond</string>
+    <key>CFBundleDisplayName</key>
+    <string>LilyPond</string>
+    <key>CFBundleName</key>
+    <string>LilyPond</string>
+    <key>CFBundleDocumentTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>ly</string>
+            </array>
+            <key>CFBundleTypeName</key>
+            <string>LilyPond source</string>
+        </dict>
+    </array>
+    <key>CFBundleIconFile</key>
+    <string>lilypond.icns</string>
+</dict>
+</plist>
