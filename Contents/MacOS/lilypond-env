@@ -14,3 +14,7 @@ ${APP_PATH}/lilypond -o /tmp/lilypond.${uuid} - <<EOF
 EOF
 
 rm /tmp/lilypond.${uuid}.pdf
+
+USR_TERM=$(${APP_PATH}/lilypond-dialog)
+
+bash -c "${USR_TERM}"

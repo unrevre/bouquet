@@ -1,0 +1,15 @@
+#!/usr/bin/osascript
+
+set input to display dialog ¬
+    "term: " ¬
+    default answer "" ¬
+    buttons { "cancel", "open" } ¬
+    default button "open" ¬
+    with title "lilypond" ¬
+    with icon 1
+
+if button returned of input = "cancel" then
+    return
+end if
+
+copy text returned of input to stdout
