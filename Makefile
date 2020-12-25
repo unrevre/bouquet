@@ -3,7 +3,13 @@ BLDDIR = ./build
 app: clean
 	./package.sh
 
+deps:
+	./prepare.sh
+
 clean:
 	$(RM) -r $(BLDDIR)
 
-.PHONY: app clean
+rmdeps:
+	./prepare.sh --uninstall
+
+.PHONY: app deps clean rmdeps
