@@ -38,6 +38,10 @@ LY_BINARY=lilypond
 LY_WRAPPER=lilypond-env
 
 LY_VERSION=$(brew info --json ${LY_FORMULA} | jq -r .[].versions.stable)
+GS_VERSION=$(brew info --json ${GS_FORMULA} | jq -r .[].versions.stable)
+GU_VERSION=$(brew info --json ${GU_FORMULA} | jq -r .[].versions.stable)
+GU_VERSION=$(echo ${GU_VERSION} | sed 's/\./-/2')
+GU_VERSION=${GU_VERSION%-*}
 
 LY_PATH=$(readlink -f $(brew --prefix ${LY_FORMULA}))
 GS_PATH=$(readlink -f $(brew --prefix ${GS_FORMULA}))
@@ -104,3 +108,6 @@ sed -i '' "s/__LY_VERSION/${LY_VERSION}/g" ${LY_APP_CONTENT}/Info.plist
 sed -i '' "s/__LY_WRAPPER/${LY_WRAPPER}/g" ${LY_APP_CONTENT}/Info.plist
 
 sed -i '' "s/__LY_VERSION/${LY_VERSION}/g" ${LY_APP_BINARIES}/${LY_WRAPPER}
+sed -i '' "s/__GS_VERSION/${GS_VERSION}/g" ${LY_APP_BINARIES}/${LY_WRAPPER}
+sed -i '' "s/__GU_VERSION/${GU_VERSION}/g" ${LY_APP_BINARIES}/${LY_WRAPPER}
+sed -i '' "s/__GU_FORMULA/${GU_FORMULA}/g" ${LY_APP_BINARIES}/${LY_WRAPPER}
