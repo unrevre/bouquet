@@ -1,0 +1,2 @@
+prependdir GUILE_LOAD_PATH=${INSTALLER_PREFIX}/Resources/share/guile/__GU_VERSION
+prependdir GUILE_LOAD_PATH=${INSTALLER_PREFIX}/Resources/share/lilypond/__LY_VERSION

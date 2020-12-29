@@ -108,6 +108,10 @@ sed -i '' "s/__LY_VERSION/${LY_VERSION}/g" ${LY_APP_CONTENT}/Info.plist
 sed -i '' "s/__LY_WRAPPER/${LY_WRAPPER}/g" ${LY_APP_CONTENT}/Info.plist
 
 sed -i '' "s/__LY_VERSION/${LY_VERSION}/g" ${LY_APP_BINARIES}/${LY_WRAPPER}
-sed -i '' "s/__GS_VERSION/${GS_VERSION}/g" ${LY_APP_BINARIES}/${LY_WRAPPER}
-sed -i '' "s/__GU_VERSION/${GU_VERSION}/g" ${LY_APP_BINARIES}/${LY_WRAPPER}
-sed -i '' "s/__GU_FORMULA/${GU_FORMULA}/g" ${LY_APP_BINARIES}/${LY_WRAPPER}
+
+LY_APP_RELOCATE=${LY_APP_RESOURCES}/etc/relocate
+
+sed -i '' "s/__GS_VERSION/${GS_VERSION}/g" ${LY_APP_RELOCATE}/gs.reloc
+sed -i '' "s/__GU_VERSION/${GU_VERSION}/g" ${LY_APP_RELOCATE}/guile.reloc
+sed -i '' "s/__LY_VERSION/${LY_VERSION}/g" ${LY_APP_RELOCATE}/guile.reloc
+sed -i '' "s/__GU_FORMULA/${GU_FORMULA}/g" ${LY_APP_RELOCATE}/libtool.reloc

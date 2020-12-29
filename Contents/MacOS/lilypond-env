@@ -8,16 +8,11 @@ APP_RELPATH="${APP_PATH}/../"
 APP_FRAMEWORKS="${APP_RELPATH}/Frameworks"
 APP_RESOURCES="${APP_RELPATH}/Resources"
 
-APP_SHARE="${APP_RESOURCES}/share"
-
 export PATH="${APP_PATH}:$PATH"
-export LTDL_LIBRARY_PATH="${APP_FRAMEWORKS}/__GU_FORMULA"
-export GS_FONTPATH="${APP_SHARE}/ghostscript/fonts"
-export GS_LIB="${APP_SHARE}/ghostscript/__GS_VERSION/Resource/Init"
-export GUILE_LOAD_PATH="${APP_SHARE}/guile/__GU_VERSION:${APP_SHARE}/lilypond/__LY_VERSION/scm"
 
-export LILYPOND_DATADIR="${APP_SHARE}/lilypond/__LY_VERSION"
-export LILYPOND_LOCALEDIR="${APP_SHARE}/locale"
+export LILYPOND_DATADIR="${APP_RESOURCES}/share/lilypond/__LY_VERSION"
+export LILYPOND_LOCALEDIR="${APP_RESOURCES}/share/locale"
+export LILYPOND_RELOCDIR="${APP_RESOURCES}/etc/relocate"
 
 uuid=$(uuidgen)
 
